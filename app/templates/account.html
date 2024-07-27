@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Account
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="display-4 text-center" style="color: #4B0082;">Your Account</h1>
+        <p class="lead text-center" style="color: #4B0082;">This is your profile page</p>
+        <form method="POST" action="{{ url_for('account') }}" class="mt-4">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.username.label(class="form-label", style="color: #4B0082;") }}
+                {{ form.username(class="form-control", size=32) }}
+                {% if form.username.errors %}
+                    <ul class="errors">
+                        {% for error in form.username.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="form-check mb-3">
+                {{ form.change_username(class="form-check-input") }}
+                {{ form.change_username.label(class="form-check-label", style="color: #4B0082;") }}
+            </div>
+            <div class="mb-3">
+                {{ form.email.label(class="form-label", style="color: #4B0082;") }}
+                {{ form.email(class="form-control", size=32) }}
+                {% if form.email.errors %}
+                    <ul class="errors">
+                        {% for error in form.email.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="form-check mb-3">
+                {{ form.change_email(class="form-check-input") }}
+                {{ form.change_email.label(class="form-check-label", style="color: #4B0082;") }}
+            </div>
+            <div class="mb-3">
+                {{ form.new_password.label(class="form-label", style="color: #4B0082;") }}
+                {{ form.new_password(class="form-control", size=32) }}
+                {% if form.new_password.errors %}
+                    <ul class="errors">
+                        {% for error in form.new_password.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="form-check mb-3">
+                {{ form.change_password(class="form-check-input") }}
+                {{ form.change_password.label(class="form-check-label", style="color: #4B0082;") }}
+            </div>
+            <div class="mb-3">
+                {{ form.confirm_new_password.label(class="form-label", style="color: #4B0082;") }}
+                {{ form.confirm_new_password(class="form-control", size=32) }}
+                {% if form.confirm_new_password.errors %}
+                    <ul class="errors">
+                        {% for error in form.confirm_new_password.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.current_password.label(class="form-label", style="color: #4B0082;") }}
+                {{ form.current_password(class="form-control", size=32) }}
+                {% if form.current_password.errors %}
+                    <ul class="errors">
+                        {% for error in form.current_password.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="d-grid">
+                {{ form.submit(class="btn btn-primary btn-lg", style="background-color: #D3D3FF; border-color: #4B0082; color: #4B0082;") }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

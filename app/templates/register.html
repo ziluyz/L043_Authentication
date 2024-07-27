@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Registration
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="display-4 text-center" style="color: #4B0082;">Registration</h1>
+        <form method="POST" action="{{ url_for('register') }}" class="mt-4">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.username.label(class="form-label", style="color: #4B0082;") }}
+                {{ form.username(class="form-control", size=32) }}
+                {% if form.username.errors %}
+                    <ul class="errors">
+                        {% for error in form.username.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.email.label(class="form-label", style="color: #4B0082;") }}
+                {{ form.email(class="form-control", size=32) }}
+                {% if form.email.errors %}
+                    <ul class="errors">
+                        {% for error in form.email.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.password.label(class="form-label", style="color: #4B0082;") }}
+                {{ form.password(class="form-control", size=32) }}
+                {% if form.password.errors %}
+                    <ul class="errors">
+                        {% for error in form.password.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.confirm_password.label(class="form-label", style="color: #4B0082;") }}
+                {{ form.confirm_password(class="form-control", size=64) }}
+                {% if form.confirm_password.errors %}
+                    <ul class="errors">
+                        {% for error in form.confirm_password.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="d-grid">
+                {{ form.submit(class="btn btn-primary btn-lg", style="background-color: #D3D3FF; border-color: #4B0082; color: #4B0082;") }}
+            </div>
+        </form>
+    </div>
+{% endblock %}
